@@ -1,7 +1,13 @@
-import Link from 'next/link';
-import { FaEye } from 'react-icons/fa';
+import { useRouter } from "next/router";
+import { FaEye } from "react-icons/fa";
 
 function Index() {
+  const router = useRouter();
+
+  const viewEmployee = (id) => {
+    router.push(`/employee/${id}`);
+  };
+
   return (
     <div className="table-responsive mt-4">
       <table className="table table-striped text-center">
@@ -19,12 +25,12 @@ function Index() {
             <td>Ajith</td>
             <td>Software Engineer</td>
             <td>
-              {/* <Link href={`/employee/ajith`}> */}
-              <Link href={{ pathname: "/employee/[id]", query: { id: "ajith" } }}>
-                <button className="btn btn-info">
-                  <FaEye /> View
-                </button>
-              </Link>
+              <button
+                className="btn btn-info"
+                onClick={() => viewEmployee("ajith")}
+              >
+                <FaEye /> View
+              </button>
             </td>
           </tr>
           <tr>
@@ -32,11 +38,12 @@ function Index() {
             <td>Amal</td>
             <td>Software Engineer</td>
             <td>
-              <Link href={`/employee/amal`}>
-                <button className="btn btn-info">
-                  <FaEye /> View
-                </button>
-              </Link>
+              <button
+                className="btn btn-info"
+                onClick={() => viewEmployee("amal")}
+              >
+                <FaEye /> View
+              </button>
             </td>
           </tr>
         </tbody>
