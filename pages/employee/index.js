@@ -19,7 +19,8 @@ function Index() {
             <td>Ajith</td>
             <td>Software Engineer</td>
             <td>
-              <Link href={`/employee/1`}>
+              {/* <Link href={`/employee/ajith`}> */}
+              <Link href={{ pathname: "/employee/[id]", query: { id: "ajith" } }}>
                 <button className="btn btn-info">
                   <FaEye /> View
                 </button>
@@ -31,7 +32,7 @@ function Index() {
             <td>Amal</td>
             <td>Software Engineer</td>
             <td>
-              <Link href={`/employee/2`}>
+              <Link href={`/employee/amal`}>
                 <button className="btn btn-info">
                   <FaEye /> View
                 </button>
