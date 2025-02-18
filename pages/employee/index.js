@@ -4,6 +4,11 @@ import { FaEye } from "react-icons/fa";
 function Index() {
   const router = useRouter();
 
+  const employees = [
+    { id: 1, name: "Ajith", designation: "Software Engineer" },
+    { id: 2, name: "Amal", designation: "Software Engineer" },
+  ];
+
   const viewEmployee = (id) => {
     router.push(`/employee/${id}`);
   };
@@ -20,32 +25,21 @@ function Index() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Ajith</td>
-            <td>Software Engineer</td>
-            <td>
-              <button
-                className="btn btn-info"
-                onClick={() => viewEmployee("ajith")}
-              >
-                <FaEye /> View
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Amal</td>
-            <td>Software Engineer</td>
-            <td>
-              <button
-                className="btn btn-info"
-                onClick={() => viewEmployee("amal")}
-              >
-                <FaEye /> View
-              </button>
-            </td>
-          </tr>
+          {employees.map((employee) => (
+            <tr key={employee.id}>
+              <td>{employee.id}</td>
+              <td>{employee.name}</td>
+              <td>{employee.designation}</td>
+              <td>
+                <button
+                  className="btn btn-info"
+                  onClick={() => viewEmployee(employee.name.toLowerCase())}
+                >
+                  <FaEye /> View
+                </button>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
